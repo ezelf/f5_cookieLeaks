@@ -44,32 +44,32 @@ Selecciono una de las tantas aplicaciones:
 
 Levantamos la tool: 
 
-![poc1_a](screenshot/poc_1_browser.png)
+![poc1_a](screenshot/poc_1_tool.png)
 
 Segun el output de la herramienta, el pool del balanceador cuenta con solo 2 IP, que finalmente sera las unicas opciones a las que internamente seremos forwardeados.
 
 
 # Quick start
 
-	usr@pwn:~$ git clone https://github.com/ezelf/AntiWeb_testing-Suite
+	usr@pwn:~$ git clone https://github.com/ezelf/f5_cookieLeaks.git
 
 ***
 
 ### Uso:
-root@CapitanAlfa:~/Escritorio/tools/repoEZELF/f5_cookieLeaks# python quickCook_v0.2.py --help
-usage: quickCook.py [-h] [-v] --host HOST [--ssl] --cookie-name COOK
-                    [--port PORT] [--req REQ] [--uri URI]
+	usr@pwn:~/$ python quickCook_v0.2.py --help
+	usage: quickCook.py [-h] [-v] --host HOST [--ssl] --cookie-name COOK
+	                    [--port PORT] [--req REQ] [--uri URI]
 
-[ F5 BIG-IP ] COOKIE REMOTE INFORMATION DISCLOSURE
+	[ F5 BIG-IP ] COOKIE REMOTE INFORMATION DISCLOSURE
 
-optional arguments:
-  -h, --help          show this help message and exit
-  -v, --version       show program's version number and exit
-  --host HOST         Host
-  --ssl               use ssl
-  --cookie-name COOK  Cookie Name
-  --port PORT         Port
-  --req REQ           Total Request
-  --uri URI           URI path
+	optional arguments:
+	  -h, --help          show this help message and exit
+	  -v, --version       show program's version number and exit
+	  --host HOST         Host
+	  --ssl               use ssl
+	  --cookie-name COOK  Cookie Name
+	  --port PORT         Port
+	  --req REQ           Total Request
+	  --uri URI           URI path
 
-[+] Demo: quickCook.py --host 192.168.1.1 --cookie-name "BIGipServerPool_X" --req 50
+	[+] Demo: quickCook.py --host 192.168.1.1 --cookie-name "BIGipServerPool_X" --req 50
