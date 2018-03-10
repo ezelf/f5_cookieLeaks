@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*- 
-import sys
+#import sys
 import time
 import requests
 import argparse
@@ -16,10 +16,11 @@ class Colors:
     BOLD 		= '\033[1m'
     BR_COLOUR 	= '\033[1;37;40m'
 
-parser = argparse.ArgumentParser(prog='leakHeader.py',
-								description=' [+]  .', 
-								epilog='[+] Demo: leakHeader.py --host 192.168.1.1 --port 80 --loop 50',
-								version="0.5")
+parser = argparse.ArgumentParser(
+					prog='quickCook.py',
+					description=' [ F5 BIG-IP ] COOKIE REMOTE INFORMATION DISCLOSURE ', 
+					epilog='[+] Demo: quickCook.py --host 192.168.1.1 --cookie-name "BIGipServerPool_X" --req 50',
+					version="0.2")
 
 parser.add_argument('--host', 		 dest="HOST",  	help='Host',			required=True)
 parser.add_argument('--ssl', 		 dest="SSL",  	help='use ssl',  		action="store_true")
@@ -54,7 +55,7 @@ def makeReqHeaders(host):
 	headers["Accept"] 			= "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" 
 	headers["Accept-Languag"] 	= "es-AR,en-US;q=0.7,en;q=0.3"
 	headers["Content-Type"] 	= "text/html"	
-	headers["X-Forwarded-For"] 	= "127.0.0.1"	
+	headers["X-Forwarded-For"] 	= "127.0.0.1"	# por que no ?
 	headers["Connection"] 		= "close"
 	return headers
 
@@ -62,6 +63,8 @@ def makeReqHeaders(host):
 def getCookie(srchCookName):
 	
 	if xSSL:
+		# 
+		# verify=True | False !!!
 		r1 			= 	requests.get(fullHost, headers=makeReqHeaders(HST), verify=True)
 	else:
 		r1 			= 	requests.get(fullHost, headers=makeReqHeaders(HST))
