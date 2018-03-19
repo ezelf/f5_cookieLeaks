@@ -52,7 +52,8 @@ Segun el output de la herramienta, el pool del balanceador cuenta con solo 2 IP,
 # Quick start
 
 	usr@pwn:~$ git clone https://github.com/ezelf/f5_cookieLeaks.git
-
+	usr@pwn:~$ cd f5_cookieLeaks
+	usr@pwn:~$ pip install -r requirements.txt
 ***
 
 ### Uso:
