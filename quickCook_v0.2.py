@@ -6,6 +6,7 @@ import argparse
 import netaddr
 from progress.bar import Bar# as Bar
 
+requests.packages.urllib3.disable_warnings()
 class Colors:
     BLUE 		= '\033[94m'
     GREEN 		= '\033[32m'
@@ -62,7 +63,7 @@ def makeReqHeaders(host):
 
 def getCookie(srchCookName):
 	if xSSL:
-		r1 			= 	requests.get(fullHost, headers=makeReqHeaders(HST), verify=True)
+		r1 			= 	requests.get(fullHost, headers=makeReqHeaders(HST), verify=False)
 	else:
 		r1 			= 	requests.get(fullHost, headers=makeReqHeaders(HST))
 
