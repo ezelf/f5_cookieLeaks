@@ -63,9 +63,9 @@ def makeReqHeaders(host):
 
 def getCookie(srchCookName):
 	if xSSL:
-		r1 			= 	requests.get(fullHost, headers=makeReqHeaders(HST), verify=False)
+		r1 			= 	requests.get(fullHost, headers=makeReqHeaders(HST), verify=False, allow_redirects=False)
 	else:
-		r1 			= 	requests.get(fullHost, headers=makeReqHeaders(HST))
+		r1 			= 	requests.get(fullHost, headers=makeReqHeaders(HST),allow_redirects=False)
 
 	headerSrv 	=   r1.headers["Set-Cookie"].split()#[3]
 
