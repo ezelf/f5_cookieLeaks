@@ -56,23 +56,22 @@ def makeReqHeaders(host):
 	headers["Accept"] 			= "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" 
 	headers["Accept-Languag"] 	= "es-AR,en-US;q=0.7,en;q=0.3"
 	headers["Content-Type"] 	= "text/html"	
-	#headers["Cookie"] 	= "BIGipServerwpsegment8w-prdw-8080-pool=00000.123.123"	# por que no ?
 	headers["Connection"] 		= "close"
 	return headers
 
 
 def getCookie(srchCookName):
 	if xSSL:
-		r1 			= 	requests.get(fullHost, headers=makeReqHeaders(HST), verify=False, allow_redirects=False)
+		r1 			= 	requests.get(fullHost, headers=makeReqHeaders(HST),allow_redirects=False, verify=False )
 	else:
 		r1 			= 	requests.get(fullHost, headers=makeReqHeaders(HST),allow_redirects=False)
 
-	headerSrv 	=   r1.headers["Set-Cookie"].split()#[3]
-
+	headerSrv 	=   r1.headers["Set-Cookie"].split()
 	for xCooks in range(0,len(headerSrv)):
 
 		srvCook = headerSrv[xCooks].split("=")
 
+		#print " cookies "+str(srvCook[1])
 		if srchCookName == srvCook[0]:
 			decIp = srvCook[1][:-1]
 			getIP = decIp[:-11]
@@ -99,7 +98,10 @@ def getCookie(srchCookName):
 			
 			return leaked
 		else:
-			return " | ----------------------------- | -------------------------"
+			hCode = r1.status_code
+			#return " | ----------------------------- | -------------------------"
+			return " | ---------- [ "+str(hCode)+" ] ---------- | -------------------------"
+
 			
 print "\n"
 print " [+] host/ip: \t\t"+HST
@@ -116,6 +118,7 @@ tblHead = '''
 
 tblFoot = ''' +-------------------------------+---------------------------------------+
 '''
+#h3ader = []
 print "\n"
 bar = Bar(' [+] REQUEST', max=loop )#, suffix='%(percent)d%%')
 nReq = []
