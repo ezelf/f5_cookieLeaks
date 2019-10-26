@@ -98,9 +98,11 @@ def getCookie(srchCookName):
 			
 			return leaked
 		else:
-			hCode = r1.status_code
-			#return " | ----------------------------- | -------------------------"
-			return " | ---------- [ "+str(hCode)+" ] ---------- | -------------------------"
+	                continue
+
+        hCode = r1.status_code
+	#return " | ----------------------------- | -------------------------"
+	return " | ---------- [ "+str(hCode)+" ] ---------- | -------------------------"
 
 			
 print "\n"
